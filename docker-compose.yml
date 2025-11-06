@@ -1,0 +1,29 @@
+services:
+  backend_restorant:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      DB_URL: jdbc:mysql://back_resto:3306/backend_resto?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      DB_USER_NAME: root
+      DB_PASSWORD: 321
+    depends_on:
+      - back_resto
+    restart: no
+
+  back_resto:
+    image: mysql:8.0.33
+    container_name: mysql_restaurant
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 321
+      MYSQL_DATABASE: backend_resto
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: no
+
+volumes:
+  db_data:
