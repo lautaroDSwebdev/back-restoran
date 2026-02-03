@@ -32,14 +32,15 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChainConfig(HttpSecurity http, AuthenticationManager auth_manager) throws Exception {
 
-        JWTAuthenFilter jwtAuthFil = new JWTAuthenFilter(jwt_ut);
-        jwtAuthFil.setAuthenticationManager(auth_manager);
-        jwtAuthFil.setFilterProcessesUrl("/login");
+        JWTAuthenFilter jwtAuthenFil = new JWTAuthenFilter(jwt_ut);
+        jwtAuthenFil.setAuthenticationManager(auth_manager);
+        jwtAuthenFil.setFilterProcessesUrl("/login");
 
         return http
                 .csrf(config -> config.disable())
                 .authorizeHttpRequests(auth -> {
-                            auth.requestMatchers("/auth/**").permitAll();
+                            auth.requestMatchers("/login/").permitAll();
+                            auth.requestMatchers("/auth/").permitAll();
                             auth.requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll();
 //                            auth.requestMatchers(HttpMethod.POST, "/createUser").hasRole("ADMIN");
 //                            auth.requestMatchers(HttpMethod.POST, "/createUser").hasRole("USER");
@@ -52,7 +53,7 @@ public class SecurityConfig {
                     session.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
                 })
 //                las validaciones del token en los filtros de autenticacion
-                .addFilter(jwtAuthFil)
+                .addFilter(jwtAuthenFil)
                 .addFilterBefore(jwt_author, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }

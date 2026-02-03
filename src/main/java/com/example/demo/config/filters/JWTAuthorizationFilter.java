@@ -28,12 +28,15 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
-        String token = request.getHeader("Authorization");
+        String tokenBearer = request.getHeader("Authorization");
+        System.out.println("header token: " + tokenBearer);
 //        Si el token es verdadero y empieza con Bearer
-        if (token != null && token.startsWith("Bearer ")) {
+        if (tokenBearer != null && tokenBearer.startsWith("Bearer ")) {
+            String token = tokenBearer.substring(7);
+            System.out.println("header token en condicion:" + token);
 //           obtener la respuesta deel token desde el caracter 7 en adelante, quitando la palabra Beader y el espacio
-            String tokenHeader = token.substring(7);
-            if (jwt_ut.TokenValidate(tokenHeader)) {
+
+            if (jwt_ut.TokenValidate(token)) {
 //Si el token es correcto, buscamos el usuario pertenetiente por el token
                 String username = jwt_ut.getUsernameFromtToken(token);
 //                y cargamos el usuario entero mediante el nombre de usuario

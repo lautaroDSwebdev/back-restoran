@@ -68,13 +68,13 @@ public class JwtUtilsClass {
 
 
     //    Validar token
-    public boolean TokenValidate(String e) {
+    public boolean TokenValidate(String token) {
         try {
 //            el parseBuilder lee el token
             Jwts.parserBuilder()
                     .setSigningKey(getSignatureKey())
                     .build()
-                    .parseClaimsJws(e)
+                    .parseClaimsJws(token)
                     .getBody();
             return true;
         } catch (Exception ex) {
