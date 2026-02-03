@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import com.example.demo.enums.ERole;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -8,29 +9,29 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @Entity
+@Table
 public class RoleEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idRole;
+    private Long id;
 
     @Enumerated(EnumType.STRING)
-    private ERole roleName;
+    private ERole name;
 
-    public Long getIdRole() {
-        return idRole;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdRole(Long idRole) {
-        this.idRole = idRole;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public ERole getRoleName() {
-        return roleName;
+    public ERole getName() {
+        return name;
     }
 
-    public void setRoleName(ERole roleName) {
-        this.roleName = roleName;
+    public void setName(ERole name) {
+        this.name = name;
     }
-
 }

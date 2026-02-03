@@ -3,6 +3,7 @@ package com.example.demo.controllers;
 import com.example.demo.entity.TablesRestaurantEntity;
 import com.example.demo.service.Impl.TablesServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,11 +15,17 @@ public class TablesController {
     @Autowired
     private TablesServiceImpl tables_serv;
 
-    @GetMapping("/tables")
-    public ResponseEntity<List<TablesRestaurantEntity>>GetTables(){
-        List<TablesRestaurantEntity> get_tables = tables_serv.GetTables();
-        return ResponseEntity.ok(get_tables);
+
+    @GetMapping
+    public  ResponseEntity<Page<TablesRestaurantEntity>> GetTables(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ){
+        Page<TablesRestaurantEntity> tables_get = tables_serv.GetTables(page, size);
+
+        return ResponseEntity.ok(tables_get);
     }
+
 
     @PostMapping("/tables")
     public String PostTables(@RequestBody TablesRestaurantEntity e){

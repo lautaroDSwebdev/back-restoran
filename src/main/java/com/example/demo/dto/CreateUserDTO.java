@@ -9,8 +9,7 @@ import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
-//@Data
-
+@Data
 public class CreateUserDTO {
 
     @Email
@@ -24,35 +23,5 @@ public class CreateUserDTO {
     private String password;
     private Set<String> roles;
 
-    public @Email @NotBlank String getEmail() {
-        return email;
-    }
 
-    public void setEmail(@Email @NotBlank String email) {
-        this.email = email;
-    }
-
-    public @NotBlank String getPassword() {
-        return password;
-    }
-
-    public void setPassword(@NotBlank String password) {
-        this.password = password;
-    }
-
-    public Set<String> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<String> roles) {
-        this.roles = roles;
-    }
-
-    public @NotBlank String getUsername() {
-        return username;
-    }
-
-    public void setUsername(@NotBlank String username) {
-        this.username = username;
-    }
 }

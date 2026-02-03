@@ -29,23 +29,5 @@ public class CategoryEntity {
         return category_name;
     }
 
-    public void setCategory_name(@NotBlank String category_name) {
-        this.category_name = category_name;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public List<MenuDishEntity> getListMenuDishes() {
-        return ListMenuDishes;
-    }
-
-    public void setListMenuDishes(List<MenuDishEntity> listMenuDishes) {
-        ListMenuDishes = listMenuDishes;
-    }
+   
 }
