@@ -19,8 +19,8 @@ public class MenuDishEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @Size(max = 50)
-//    @NotBlank
+    @Size(max = 50)
+    @NotBlank
     @Column(name = "menu")
     private String menu;
 
