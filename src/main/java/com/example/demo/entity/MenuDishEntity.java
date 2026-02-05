@@ -24,6 +24,9 @@ public class MenuDishEntity {
     @Column(name = "menu")
     private String menu;
 
+    @Column(name = "img_dish")
+    private String img;
+
 //    @NotNull
     @Column(name = "price")
     private int price;
@@ -97,5 +100,13 @@ public class MenuDishEntity {
 
     public void setReviews_menu(List<ReviewsEntity> reviews_menu) {
         this.reviews_menu = reviews_menu;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }
