@@ -1,8 +1,8 @@
 package com.example.demo.service.Impl;
 
-import com.example.demo.entity.MenuDishEntity;
-import com.example.demo.repository.MenuDishRepo;
-import com.example.demo.service.inter.IMenuDishSerivice;
+import com.example.demo.entity.dish.MenuDishEntity;
+import com.example.demo.repository.dish.MenuDishRepo;
+import com.example.demo.service.inter.dish.IMenuDishSerivice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

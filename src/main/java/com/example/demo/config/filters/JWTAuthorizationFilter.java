@@ -29,7 +29,7 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
         String tokenBearer = request.getHeader("Authorization");
-        System.out.println("header token: " + tokenBearer);
+//        System.out.println("header token: " + tokenBearer);
 //        Si el token es verdadero y empieza con Bearer
         if (tokenBearer != null && tokenBearer.startsWith("Bearer ")) {
             String token = tokenBearer.substring(7);

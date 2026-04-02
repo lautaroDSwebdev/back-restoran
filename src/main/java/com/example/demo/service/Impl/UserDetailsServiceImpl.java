@@ -21,7 +21,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private UserRepository user_repo;
 
 
-//    El usuario que va a usar autenticado, lo tiene que buscar en la base de datos, si el usuario no existe pues no va a otorgar el acceso
+    //    El usuario que va a usar autenticado, lo tiene que buscar en la base de datos, si el usuario no existe pues no va a otorgar el acceso
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
