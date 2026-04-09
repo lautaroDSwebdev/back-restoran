@@ -16,8 +16,8 @@ public class MenuDessertController {
 
     @GetMapping
     public List<MenuDessertEntity> GetDessert(){
-        List<MenuDessertEntity> get_dessert = menu_dessert.GetDessert();
-        return get_dessert;
+
+        return menu_dessert.GetDessert();
     }
 
 

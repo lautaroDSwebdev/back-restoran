@@ -22,13 +22,13 @@ public class SubOrderDishController {
     @PostMapping
     public String postSubOrder(@RequestBody SubOrderDish e) {
         subOrderDishService.PostSubOrderDish(e);
-        return "Sub order dish created";
+        return "Sub orden de plato creada!";
     }
 
     @DeleteMapping("/{id}")
     public String deleteSubOrder(@PathVariable Long id) {
         subOrderDishService.DeleteSubOrderDish(id);
-        return "Sub order dish deleted";
+        return "Sub order dish eliminada 🗑";
     }
 
     @PutMapping

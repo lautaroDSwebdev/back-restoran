@@ -15,9 +15,9 @@ public class MenuDishController {
     private MenuDishServiceImpl menu_service;
 
     @GetMapping
-    public List<MenuDishEntity> GetMenus(){
-        List<MenuDishEntity> get_menus =   menu_service.GetMenuDish();
-        return get_menus;
+    public List<MenuDishEntity> GetAllMenuDishes(){
+
+        return menu_service.GetMenuDish();
     }
 
     @PostMapping

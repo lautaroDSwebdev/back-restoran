@@ -15,25 +15,24 @@ public class CategoryDessertController {
     private CategoryDessertServiceImpl categdessert_service;
 
     @GetMapping
-    public List<CategoryDessertsEntity> GetCategory(){
-        List<CategoryDessertsEntity> get_categ =  categdessert_service.GetCategoryDessert();
-        return get_categ;
+    public List<CategoryDessertsEntity> GetCategoryDessert() {
+        return categdessert_service.GetCategoryDessert();
     }
 
     @PostMapping
-    public String PostCategory(@RequestBody CategoryDessertsEntity e){
+    public String PostCategory(@RequestBody CategoryDessertsEntity e) {
         categdessert_service.PostCategoryDesserts(e);
         return "categoria creada";
     }
 
     @PutMapping
-    public CategoryDessertsEntity PutCategory(@RequestBody CategoryDessertsEntity e){
+    public CategoryDessertsEntity PutCategory(@RequestBody CategoryDessertsEntity e) {
         categdessert_service.PutCategoryDesserts(e);
         return categdessert_service.FindCategoryDesserts(e.getId());
     }
 
     @DeleteMapping("/{id}")
-    public String DeleteCategory(@PathVariable Long id){
+    public String DeleteCategory(@PathVariable Long id) {
         categdessert_service.DeleteCategoryDesserts(id);
         return "categoria eliminada";
     }

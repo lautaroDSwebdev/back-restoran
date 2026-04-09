@@ -16,8 +16,7 @@ public class GeneralOrderController {
 
     @GetMapping
     public List<GeneralOrderEntity> GetGeneralOrder(){
-        List<GeneralOrderEntity> get_categ =  gen_order_serv.GetGeneralOrder();
-        return get_categ;
+        return  gen_order_serv.GetGeneralOrder();
     }
 
     @PostMapping

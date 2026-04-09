@@ -1,10 +1,19 @@
 package com.example.demo.enums;
 
 public enum ECategoryDishes {
-//    entrada
-    STARTER,
-//    plato principal
-    MAIN_COURSE,
-//    postre
-    DESSERT
+    // Categorías por tiempo de comida
+    STARTER,       // Entrada
+    MAIN_COURSE,   // Plato principal (Almuerzo/Cena)
+    DESSERT,       // Postre
+
+    // Subcategorías de platos (opcionales por si querés más detalle)
+    PASTA,         // Pastas
+    PIZZA,         // Pizzas
+    MEAT,          // Carnes
+    PIE,           // Tartas
+    SALAD,         // Ensaladas
+
+    // Bebidas
+    BEVERAGE,      // Bebidas (General)
+    SODA           // Gaseosas
 }

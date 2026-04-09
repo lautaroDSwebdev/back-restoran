@@ -20,8 +20,6 @@ public class SubOrderDrink {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany
-    private List<MenuDrinksEntity> menu_drinks;
 
     private int total_price;
 
@@ -29,6 +27,9 @@ public class SubOrderDrink {
     private int quantity;
 
     private String details_drink;
+
+    @OneToMany
+    private List<MenuDrinksEntity> menu_drinks;
 
     public Long getId() {
         return id;

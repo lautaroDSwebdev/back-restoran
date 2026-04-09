@@ -16,8 +16,7 @@ public class MenuDrinkServiceImpl implements IMenuDrinkService {
 
     @Override
     public List<MenuDrinksEntity> GetDrinks() {
-        List<MenuDrinksEntity> get_drinks = menu_drink_repo.findAll();
-        return get_drinks;
+        return menu_drink_repo.findAll();
     }
 
     @Override

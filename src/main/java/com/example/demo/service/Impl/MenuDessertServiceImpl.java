@@ -22,8 +22,7 @@ public class MenuDessertServiceImpl implements IMenuDessertService {
 
     @Override
     public List<MenuDessertEntity> GetDessert() {
-        List<MenuDessertEntity> get_dessert = menuDessertRepo.findAll();
-        return get_dessert;
+        return menuDessertRepo.findAll();
     }
 
     @Override

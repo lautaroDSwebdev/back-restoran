@@ -17,8 +17,7 @@ public class CategoryDishServiceImpl implements ICategoryDishesService {
 
     @Override
     public List<CategoryDishesEntity> GetCategoriesDishes() {
-        List<CategoryDishesEntity> dish = categodish_repo.findAll();
-        return dish;
+        return categodish_repo.findAll();
     }
 
     @Override
@@ -28,7 +27,7 @@ public class CategoryDishServiceImpl implements ICategoryDishesService {
 
     @Override
     public void PutCategoryDishes(CategoryDishesEntity e) {
-
+        this.PostCategoryDishes(e);
     }
 
     @Override

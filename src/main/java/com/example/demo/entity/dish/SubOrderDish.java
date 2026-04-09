@@ -1,6 +1,7 @@
 package com.example.demo.entity.dish;
 
 import com.example.demo.entity.dessert.MenuDessertEntity;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,14 +10,13 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@Data
+//@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
 @Table
 public class SubOrderDish {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,10 +31,12 @@ public class SubOrderDish {
     private String details_dish;
 
     @OneToMany
-    private List<MenuDishEntity> menu_dishes;
+    @Column(name = "menu_dishes")
+    private List<MenuDishEntity> menuDishes;
 
     @OneToMany
-    private List<MenuDessertEntity> menu_dessert;
+    @Column(name = "menu_dessert_list")
+    private List<MenuDessertEntity> menuDessert;
 
     public Long getId() {
         return id;
@@ -44,13 +46,6 @@ public class SubOrderDish {
         this.id = id;
     }
 
-    public List<MenuDishEntity> getmenu_dishes() {
-        return menu_dishes;
-    }
-
-    public void setmenu_dishes(List<MenuDishEntity> menu_dishes) {
-        this.menu_dishes = menu_dishes;
-    }
 
     public int getTotal_price() {
         return total_price;
@@ -58,6 +53,22 @@ public class SubOrderDish {
 
     public void setTotal_price(int total_price) {
         this.total_price = total_price;
+    }
+
+    public List<MenuDishEntity> getMenuDishes() {
+        return menuDishes;
+    }
+
+    public void setMenuDishes(List<MenuDishEntity> menuDishes) {
+        this.menuDishes = menuDishes;
+    }
+
+    public List<MenuDessertEntity> getMenuDessert() {
+        return menuDessert;
+    }
+
+    public void setMenuDessert(List<MenuDessertEntity> menuDessert) {
+        this.menuDessert = menuDessert;
     }
 
     public int getQuantity() {
@@ -76,19 +87,6 @@ public class SubOrderDish {
         this.details_dish = details_dish;
     }
 
-    public List<MenuDishEntity> getMenu_dishes() {
-        return menu_dishes;
-    }
 
-    public void setMenu_dishes(List<MenuDishEntity> menu_dishes) {
-        this.menu_dishes = menu_dishes;
-    }
 
-    public List<MenuDessertEntity> getMenu_dessert() {
-        return menu_dessert;
-    }
-
-    public void setMenu_dessert(List<MenuDessertEntity> menu_dessert) {
-        this.menu_dessert = menu_dessert;
-    }
 }

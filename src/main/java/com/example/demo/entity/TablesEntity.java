@@ -1,6 +1,5 @@
 package com.example.demo.entity;
 
-import com.example.demo.entity.dish.SubOrderDish;
 import com.example.demo.enums.ETableState;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
@@ -30,11 +29,12 @@ public class TablesEntity {
     private String location;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "state_capacity")
     private ETableState state_capacity;
 
     @OneToOne
-    private SubOrderDish general_order;
+    @JoinColumn(name = "general_order_id")
+    private GeneralOrderEntity general_order;
+
 
     public Long getId() {
         return id;
@@ -60,12 +60,11 @@ public class TablesEntity {
         this.location = location;
     }
 
-
-    public SubOrderDish getGeneral_order() {
+    public GeneralOrderEntity getGeneral_order() {
         return general_order;
     }
 
-    public void setGeneral_order(SubOrderDish general_order) {
+    public void setGeneral_order(GeneralOrderEntity general_order) {
         this.general_order = general_order;
     }
 

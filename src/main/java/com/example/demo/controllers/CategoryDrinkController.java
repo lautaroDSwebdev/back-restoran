@@ -17,8 +17,9 @@ public class CategoryDrinkController {
 
     @GetMapping
     public List<CategoryDrinksEntity> GetCategory(){
-        List<CategoryDrinksEntity> get_categ =  categdrink_service.GetCategoryDessert();
-        return get_categ;
+
+
+        return categdrink_service.GetCategoryDessert();
     }
 
     @PostMapping

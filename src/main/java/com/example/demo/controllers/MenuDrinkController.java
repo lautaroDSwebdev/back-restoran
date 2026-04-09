@@ -16,8 +16,8 @@ public class MenuDrinkController {
 
     @GetMapping
     public List<MenuDrinksEntity> GetDrinks() {
-        List<MenuDrinksEntity> get_drinks = menu_drink.GetDrinks();
-        return get_drinks;
+
+        return menu_drink.GetDrinks();
     }
 
     @PostMapping

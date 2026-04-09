@@ -16,8 +16,7 @@ public class MenuDishServiceImpl implements IMenuDishSerivice {
 
     @Override
     public List<MenuDishEntity> GetMenuDish() {
-        List<MenuDishEntity> get_menu = menu_repo.findAll();
-        return get_menu;
+        return menu_repo.findAll();
     }
 
     @Override

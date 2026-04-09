@@ -17,8 +17,7 @@ public class CategoryDrinkServiceImpl implements ICategoryDrinkService {
 
     @Override
     public List<CategoryDrinksEntity> GetCategoryDessert() {
-        List<CategoryDrinksEntity> cat_drink = cat_drink_repo.findAll();
-        return cat_drink;
+        return cat_drink_repo.findAll();
     }
 
     @Override

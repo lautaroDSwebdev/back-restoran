@@ -24,11 +24,13 @@ public class GeneralOrderEntity {
 
     private String name_client;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "general_order_id")
     private List<SubOrderDish> sub_order_dish;
 
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "general_order_id")
     private List<SubOrderDrink> sub_order_drink;
 
     public Long getId() {

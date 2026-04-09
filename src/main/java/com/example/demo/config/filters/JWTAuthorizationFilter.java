@@ -33,7 +33,7 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
 //        Si el token es verdadero y empieza con Bearer
         if (tokenBearer != null && tokenBearer.startsWith("Bearer ")) {
             String token = tokenBearer.substring(7);
-            System.out.println("header token en condicion:" + token);
+            System.out.println("header token en condicion: " + token);
 //           obtener la respuesta deel token desde el caracter 7 en adelante, quitando la palabra Beader y el espacio
 
             if (jwt_ut.TokenValidate(token)) {
