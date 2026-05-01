@@ -22,7 +22,7 @@ public class GeneralOrderController {
     @PostMapping
     public String PostGeneralOrder(@RequestBody GeneralOrderEntity e){
         gen_order_serv.PostGeneralOrder(e);
-        return "categoria creada";
+        return "orden general creada ";
     }
 
     @PutMapping
@@ -34,7 +34,7 @@ public class GeneralOrderController {
     @DeleteMapping("/{id}")
     public String DeleteGeneralOrder(@PathVariable Long id){
         gen_order_serv.DeleteGeneralOrder(id);
-        return "categoria eliminada";
+        return "orden general  eliminada";
     }
     
     

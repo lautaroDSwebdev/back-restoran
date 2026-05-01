@@ -1,7 +1,5 @@
 package com.example.demo.entity;
 
-import com.example.demo.entity.dish.SubOrderDish;
-import com.example.demo.entity.drink.SubOrderDrink;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,16 +20,14 @@ public class GeneralOrderEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name_client;
 
     @OneToMany(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "general_order_id")
-    private List<SubOrderDish> sub_order_dish;
+    @JoinColumn(name = "sub_order_general_id")
+    private List<SubOrderItem> sub_order_list; // Aquí dentro puede haber un plato, un postre O una bebida
 
+    private int total_price;
 
-    @OneToMany(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "general_order_id")
-    private List<SubOrderDrink> sub_order_drink;
+    private String details_order;
 
     public Long getId() {
         return id;
@@ -41,27 +37,27 @@ public class GeneralOrderEntity {
         this.id = id;
     }
 
-    public String getName_client() {
-        return name_client;
+    public List<SubOrderItem> getSub_order_list() {
+        return sub_order_list;
     }
 
-    public void setName_client(String name_client) {
-        this.name_client = name_client;
+    public void setSub_order_list(List<SubOrderItem> sub_order_list) {
+        this.sub_order_list = sub_order_list;
     }
 
-    public List<SubOrderDish> getSub_order_dish() {
-        return sub_order_dish;
+    public int getTotal_price() {
+        return total_price;
     }
 
-    public void setSub_order_dish(List<SubOrderDish> sub_order_dish) {
-        this.sub_order_dish = sub_order_dish;
+    public void setTotal_price(int total_price) {
+        this.total_price = total_price;
     }
 
-    public List<SubOrderDrink> getSub_order_drink() {
-        return sub_order_drink;
+    public String getDetails_order() {
+        return details_order;
     }
 
-    public void setSub_order_drink(List<SubOrderDrink> sub_order_drink) {
-        this.sub_order_drink = sub_order_drink;
+    public void setDetails_order(String details_order) {
+        this.details_order = details_order;
     }
 }
