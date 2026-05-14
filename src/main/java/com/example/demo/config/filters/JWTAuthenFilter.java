@@ -86,6 +86,7 @@ public class JWTAuthenFilter extends UsernamePasswordAuthenticationFilter {
         httpResp.put("token", token);
         httpResp.put("message", "Authentication succesful");
         httpResp.put("username", user.getUsername());
+        httpResp.put("user_id", user.getId());
         httpResp.put("email", user.getEmail());
         httpResp.put("role", roles);
 //    httpResp.put("password ",  user.getPassword());

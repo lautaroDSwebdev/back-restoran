@@ -4,6 +4,9 @@ import com.example.demo.entity.dessert.MenuDessertEntity;
 import com.example.demo.repository.dessert.MenuDessertRepo;
 import com.example.demo.service.inter.dessert.IMenuDessertService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,10 +22,11 @@ public class MenuDessertServiceImpl implements IMenuDessertService {
 //        return menuDessertRepo.findAll();
 //    }
 
-
     @Override
-    public List<MenuDessertEntity> GetDessert() {
-        return menuDessertRepo.findAll();
+    public Page<MenuDessertEntity> GetDessert(int page, int size) {
+
+        Pageable pagin_prod = PageRequest.of(page, size);
+        return menuDessertRepo.findAll(pagin_prod);
     }
 
     @Override

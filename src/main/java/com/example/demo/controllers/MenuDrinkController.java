@@ -3,9 +3,9 @@ package com.example.demo.controllers;
 import com.example.demo.entity.drink.MenuDrinksEntity;
 import com.example.demo.service.inter.drink.IMenuDrinkService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/menu-drink")
@@ -15,10 +15,15 @@ public class MenuDrinkController {
     private IMenuDrinkService menu_drink;
 
     @GetMapping
-    public List<MenuDrinksEntity> GetDrinks() {
+    public ResponseEntity<Page<MenuDrinksEntity>> GetDrinks(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ) {
+        Page<MenuDrinksEntity> drinks_get = menu_drink.GetDrinks(page, size);
 
-        return menu_drink.GetDrinks();
+        return ResponseEntity.ok(drinks_get);
     }
+
 
     @PostMapping
     public String PostDrinks(@RequestBody MenuDrinksEntity e) {

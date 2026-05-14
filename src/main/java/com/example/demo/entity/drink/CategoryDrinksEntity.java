@@ -21,6 +21,8 @@ public class CategoryDrinksEntity {
     @Enumerated(EnumType.STRING)
     private ECategoryDrinks category;
 
+    private String description;
+
     @OneToMany
     private List<MenuDrinksEntity> list_drinks;
 
@@ -50,4 +52,11 @@ public class CategoryDrinksEntity {
         this.category = category;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

@@ -21,7 +21,7 @@ public class CategoryDessertsEntity {
 //    @NotBlank
     @Enumerated(EnumType.STRING)
     private ECategoryDessert category;
-
+    private String description;
     @OneToMany
     private List<MenuDessertEntity> list_desserts;
 
@@ -47,5 +47,21 @@ public class CategoryDessertsEntity {
 
     public void setList_desserts(List<MenuDessertEntity> list_desserts) {
         this.list_desserts = list_desserts;
+    }
+
+    public ECategoryDessert getCategory() {
+        return category;
+    }
+
+    public void setCategory(ECategoryDessert category) {
+        this.category = category;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

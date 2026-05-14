@@ -2,12 +2,11 @@ package com.example.demo.service.inter.drink;
 
 
 import com.example.demo.entity.drink.MenuDrinksEntity;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
 
 public interface IMenuDrinkService {
 
-    public List<MenuDrinksEntity> GetDrinks();
+    public Page<MenuDrinksEntity> GetDrinks(int page, int  size);
 
     public void PostMenuDrinks(MenuDrinksEntity e);
     public void PutMenuDrinks(MenuDrinksEntity e);

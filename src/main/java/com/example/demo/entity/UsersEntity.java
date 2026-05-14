@@ -26,6 +26,12 @@ public class UsersEntity {
     @Size(max = 30)
     private String username;
 
+    @NotBlank
+    @Size(max = 30)
+    private String lastname;
+
+    private int dni;
+
 
     private String profile_img;
 
@@ -84,5 +90,29 @@ public class UsersEntity {
 
     public void setRoles(Set<RoleEntity> roles) {
         this.roles = roles;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getProfile_img() {
+        return profile_img;
+    }
+
+    public void setProfile_img(String profile_img) {
+        this.profile_img = profile_img;
+    }
+
+    public int getDni() {
+        return dni;
+    }
+
+    public void setDni(int dni) {
+        this.dni = dni;
     }
 }
