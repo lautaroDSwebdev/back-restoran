@@ -1,6 +1,7 @@
 package com.example.demo.config.filters;
 
 import com.example.demo.config.security.JwtUtilsClass;
+import com.example.demo.entity.CustomUserDetails;
 import com.example.demo.entity.UsersEntity;
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
@@ -14,12 +15,15 @@ import org.springframework.http.MediaType;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class JWTAuthenFilter extends UsernamePasswordAuthenticationFilter {
 
@@ -65,16 +69,26 @@ public class JWTAuthenFilter extends UsernamePasswordAuthenticationFilter {
                                             FilterChain chain,
                                             Authentication authResult) throws IOException, ServletException {
 
-        User user = (User) authResult.getPrincipal();
+        CustomUserDetails user = (CustomUserDetails) authResult.getPrincipal();
+
+// --- AQUÍ ESTÁ EL TRUCO ---
+        // Extraemos los roles como una lista de Strings simple: ["ROLE_ADMIN"]
+        List<String> roles = user.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.toList());
+
 //        acá le damos a jwt dedde el generador de token de acceso el username del usuario ya autenticado
         String token = jwt_utils.generateUserAccesToken(user.getUsername());
         response.addHeader("Authorization", token);
 
 //        Acá a la trespuesta la convertimos en un json y es lo que nos va a responder el login
         Map<String, Object> httpResp = new HashMap<>();
-    httpResp.put("token", token);
-    httpResp.put("message", "Authentication succesful");
-    httpResp.put("username",  user.getUsername());
+        httpResp.put("token", token);
+        httpResp.put("message", "Authentication succesful");
+        httpResp.put("username", user.getUsername());
+        httpResp.put("user_id", user.getId());
+        httpResp.put("email", user.getEmail());
+        httpResp.put("role", roles);
 //    httpResp.put("password ",  user.getPassword());
 
         response.getWriter().write(new ObjectMapper().writeValueAsString(httpResp));

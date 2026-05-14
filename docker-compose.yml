@@ -6,24 +6,24 @@ services:
     ports:
       - "8080:8080"
     environment:
-      DB_URL: jdbc:mysql://back_resto:3306/backend_resto?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-      DB_USER_NAME: root
+      # Cambiamos la URL para Postgres
+      DB_URL: jdbc:postgresql://back_resto:5432/backend_resto
+      DB_USER_NAME: user_admin
       DB_PASSWORD: 321
     depends_on:
       - back_resto
-    restart: no
 
   back_resto:
-    image: mysql:8.0.33
-    container_name: mysql_restaurant
+    image: postgres:15-alpine
+    container_name: postgres_restaurant
     ports:
-      - "3306:3306"
+      - "5432:5432"
     environment:
-      MYSQL_ROOT_PASSWORD: 321
-      MYSQL_DATABASE: backend_resto
+      POSTGRES_USER: user_admin
+      POSTGRES_PASSWORD: 321
+      POSTGRES_DB: backend_resto
     volumes:
-      - db_data:/var/lib/mysql
-    restart: no
+      - pg_data:/var/lib/postgresql/data
 
 volumes:
-  db_data:
+  pg_data:

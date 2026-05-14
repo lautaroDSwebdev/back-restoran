@@ -1,14 +1,17 @@
 package com.example.demo.controllers;
 
 import com.example.demo.dto.CreateUserDTO;
+import com.example.demo.dto.UserResponse;
 import com.example.demo.enums.ERole;
 import com.example.demo.entity.RoleEntity;
 import com.example.demo.entity.UsersEntity;
 import com.example.demo.repository.UserRepository;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,11 +28,11 @@ public class UserController {
     @Autowired
     private UserRepository user_repo;
 
-    @GetMapping("/ping")
-    public String ping() {
-        return "existe";
+    @GetMapping("/me")
+    @Operation(summary = "Get current user profile")
+    public ResponseEntity<UserResponse> getCurrentUser(@AuthenticationPrincipal UsersEntity e) {
+        return ResponseEntity.ok(UserResponse.fromUser(e));
     }
-
 
     @PostMapping
     public ResponseEntity<?> createUser(@Valid @RequestBody CreateUserDTO e) {
